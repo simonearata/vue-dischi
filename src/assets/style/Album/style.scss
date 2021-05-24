@@ -1,0 +1,23 @@
+.box_album{
+  min-height: 440px;
+  color: white;
+  background-color: #2e3a46;
+  margin: 10px 0;
+  .box_img{
+    margin: 20px 8px 20px 8px;
+    img{
+      width: 100%;
+    }
+  }
+  h3{
+    text-transform: uppercase;
+  }
+  p{
+    color: #7e7f80;
+    margin-bottom:0
+  }
+}
+
+.col-half-offset{
+  margin-left: 3%
+}
