@@ -1,0 +1,17 @@
+form{
+  margin: 40px 0;
+  .box_input{
+    width: 40%;
+  }
+
+  .box_btn{
+    .btn:first-child{
+      margin: 0 15px;
+    }
+    .btn{
+      padding: 6px 20px;
+      color: white;
+      background-color: #2e3a46;
+    }
+  }
+}

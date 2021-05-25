@@ -1,41 +1,58 @@
 <template>
   
-  <div v-if="!success" class="container">
+  <div class="container">
+
+    <search 
+      @searchAlbum="cercaAlbum"
+    />
+
     <div class="row text-center">
       <Album 
-        v-for="(album, index) in albums.response"
+        v-for="(album, index) in filterAlbums"
         :key="index"
         :album="album"
       />
     </div>
   </div>
-  <div v-else>Attendere...</div>
 
 </template>
 
 <script>
 import axios from 'axios'
 import Album from '@/components/Album'
+import Search from './Search.vue'
 
 
 export default {
   name: 'MainComp',
   components:{
-    Album
+    Album,
+    Search
   },
   data(){
     return{
       axios,
       albums:[],
-      success: true
+      textSearch:''
     }
   },
-
+  methods:{
+    cercaAlbum(text){
+      this.textSearch = text
+    }
+  },
+  computed:{
+    filterAlbums(){
+      if(this.textSearch === ""){
+        return this.albums
+      }
+      return this.albums.filter(item => item.genre === this.textSearch)
+    }
+  },
   created(){
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
     .then(res => {
       this.albums = res.data;
-      this.success = false;
       console.log(res.data);
     })
     .catch(err => {
